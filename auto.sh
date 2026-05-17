@@ -21,14 +21,14 @@ sudo python3 /tmp/install.py
 #############################
 
 echo "Teste de ambiente"
-sudo aied validar 0000 ola > TesteAIED.txt
+sudo aied validar 0000 ola | tee TesteAIED.txt
 
 ############################################
 # Prática 3.6.1 Criando o ambiente da aula #
 ############################################
 
 echo "3.6.1 Criando o ambiente da aula"
-sudo aied validar 98a917ce checkpoint01 > 3.6.1.txt
+sudo aied validar 98a917ce checkpoint01 | tee 3.6.1.txt
 
 ###
 # Prática 4.15.1
@@ -43,7 +43,7 @@ echo "444" > ./diretorio2/arquivo4
 echo "555" > ./diretorio2/arquivo5
 echo "666" > ./diretorio2/arquivo6
 
-sudo aied validate 8e9c361c checkpoint01 > 4.15.1.txt
+sudo aied validate 8e9c361c checkpoint01 | tee 4.15.1.txt
 
 
 
