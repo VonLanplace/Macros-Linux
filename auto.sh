@@ -21,6 +21,7 @@ sudo python3 /tmp/install.py
 #############################
 
 echo "Teste de ambiente"
+rm TesteAIED.txt || echo ""
 sudo aied validar 0000 ola | tee TesteAIED.txt
 
 ############################################
@@ -28,6 +29,7 @@ sudo aied validar 0000 ola | tee TesteAIED.txt
 ############################################
 
 echo "3.6.1 Criando o ambiente da aula"
+rm 3.6.1.txt || echo ""
 sudo aied validar 98a917ce checkpoint01 | tee 3.6.1.txt
 
 ###
@@ -35,6 +37,8 @@ sudo aied validar 98a917ce checkpoint01 | tee 3.6.1.txt
 ##
 
 echo "4.15.1 Criando Diretórios e arquivos no GNU/Linux"
+rm 4.15.1.txt || echo ""
+rm -r ./diretorio*
 mkdir diretorio1 diretorio2 diretorio 3
 echo "111" > ./diretorio1/arquivo1
 echo "222" > ./diretorio1/arquivo2
