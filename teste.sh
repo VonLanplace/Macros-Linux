@@ -16,6 +16,7 @@ echo -e "g\nn\n1\n\n\nw" | sudo fdisk $DISK
 sudo mkfs.ext4 $PARTITION
 sudo mkdir -p /backup
 echo "UUID=$(sudo lsblk -no UUID $PARTITION) /backup ext4 defaults,nofail 0 2" | sudo tee -a /etc/fstab
+sudo systemctl daemon-reload
 sudo mount -a
 
 sudo aied validate 8b65b431 checkpoint01 | tee ~/6.15.1.txt
