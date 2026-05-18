@@ -20,16 +20,15 @@ sudo aied validar 0000 ola | tee ~/TesteAIED.txt
 
 echo "3.6.1 Criando o ambiente da aula"
 mkdir 3.6
-rm ~/3.6/1.txt || echo ""
-sudo aied validar 98a917ce checkpoint01 | tee ~/3.6/1.txt
+rm ~/3.6.1.txt || echo ""
+sudo aied validar 98a917ce checkpoint01 | tee ~/3.6.1.txt
 
 ##################
 # Prática 4.15.1 #
 ##################
 
 echo "4.15.1 Criando Diretórios e arquivos no GNU/Linux"
-mkdir 4.15
-rm ~/4.15/1.txt || echo ""
+rm ~/4.15.1.txt || echo ""
 rm -r ~/diretorio*
 mkdir ~/diretorio{1,2,3}
 echo "111" > ~/diretorio1/arquivo1
@@ -39,36 +38,36 @@ echo "444" > ~/diretorio2/arquivo4
 echo "555" > ~/diretorio2/arquivo5
 echo "666" > ~/diretorio2/arquivo6
 
-sudo aied validate 8e9c361c checkpoint01 | tee ~/4.15/1.txt
+sudo aied validate 8e9c361c checkpoint01 | tee ~/4.15.1.txt
 
 ##################
 # Prática 4.15.2 #
 ##################
 echo "4.15.2"
-rm ~/4.15/2.txt || echo ""
+rm ~/4.15.2.txt || echo ""
 
 cp ~/diretorio1/arquivo1 ~/diretorio3/arquivo1
 rm ~/diretorio2/arquivo4
 mv ~/diretorio2/arquivo5 ~/diretorio3/
 
-sudo aied validate 8e9c361c checkpoint02 | tee ~/4.15/2.txt
+sudo aied validate 8e9c361c checkpoint02 | tee ~/4.15.2.txt
 
 ##################
 # Prática 4.15.3 #
 ##################
 echo "4.15.3"
-rm ~/4.15/3.txt || echo ""
+rm ~/4.15.3.txt || echo ""
 
 ln -s ~/diretorio1/arquivo3 ~/diretorio3/arquivo3
 ln ~/diretorio2/arquivo6 ~/diretorio3/arquivo6
 
-sudo aied validate 8e9c361c checkpoint03 | tee ~/4.15/3.txt
+sudo aied validate 8e9c361c checkpoint03 | tee ~/4.15.3.txt
 
 ##################
 # Prática 4.15.4 #
 ##################
 echo "4.15.4"
-rm ~/4.15/4.txt || echo ""
+rm ~/4.15.4.txt || echo ""
 rm ~/copiar*
 cat <<'EOF' > copiar.cpp
 #include <fcntl.h>
@@ -114,14 +113,13 @@ chmod 1777 ~/tmp/
 chmod 755 ~/bin/copiar
 chmod 4755 /etc/aied/aied_64
 
-sudo aied validate 8e9c361c checkpoint04 | tee ~/4.15/4.txt
+sudo aied validate 8e9c361c checkpoint04 | tee ~/4.15.4.txt
 
 #
 #
 #
 echo "5.15.1"
-mkdir 5.15
-rm ~/5.15/1.txt || echo ""
+rm ~/5.15.1.txt || echo ""
 
 sudo groupadd alunos
 sudo useradd -g alunos joao
@@ -140,7 +138,7 @@ echo "Insira a senha do leticia"
 sudo passwd leticia
 wait
 
-sudo aied validate fcb0b800 checkpoint01 | tee ~/5.15/1.txt
+sudo aied validate fcb0b800 checkpoint01 | tee ~/5.15.1.txt
 
 #
 #
@@ -157,14 +155,14 @@ sudo usermod -L leticia
 
 sudo usermod -s /bin/false leticia
 
-sudo aied validate fcb0b800 checkpoint02 | tee ~/5.15/2.txt
+sudo aied validate fcb0b800 checkpoint02 | tee ~/5.15.2.txt
 
 #
 #
 #
 sudo usermod -p '*' root
 sudo usermod -s /bin/false www-data
-sudo aied validate fcb0b800 checkpoint03 | tee ~/5.15/3.txt
+sudo aied validate fcb0b800 checkpoint03 | tee ~/5.15.3.txt
 
 #
 #
@@ -174,7 +172,7 @@ sudo groupadd tomcat
 sudo useradd -s /bin/false -g tomcat -d /opt/tomcat -M tomcat
 sudo mkdir -p /opt/tomcat
 sudo chgrp tomcat /opt/tomcat
-sudo aied validate fcb0b800 checkpoint04 | tee ~/5.15/4.txt
+sudo aied validate fcb0b800 checkpoint04 | tee ~/5.15.4.txt
 
 
 
