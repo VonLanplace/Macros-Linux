@@ -201,7 +201,14 @@ sudo aied validate 8b65b431 checkpoint01 | tee ~/6.15.1.txt
 # 6.15.2
 #
 
+mkdir /home/userlinux/cdrom
+sudo mount /dev/sr0 /home/userlinux/cdrom/
 
+sudo aied validar 8b65b431 checkpoint02 | tee ~/6.15.2.txt
 
+#
+# 6.15.3
+#
 
-
+ps aux | grep python > ~/typescript
+sudo aied validar prc0001 checkpoint01
