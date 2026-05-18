@@ -108,9 +108,9 @@ gcc copiar.cpp -o copiar
 mkdir ~/{temp,bin}
 chmod +t ~/temp
 cp copiar ~/bin/
-chmod 777 ~/tmp/
+chmod 1777 ~/tmp/
 chmod 755 ~/bin/copiar
-chmod 755 ~/etc/aied/aied_64
+chmod 4755 ~/etc/aied/aied_64
 
 sudo aied validate 8e9c361c checkpoint04 | tee ~/4.15.4.txt
 
@@ -129,10 +129,13 @@ sudo chmod 755 /hd2/usuarios/
 sudo useradd -m -d /hd2/usuarios/bia bia
 echo "Insira a senha do wanderson"
 sudo passwd wanderson
+wait
 echo "Insira a senha do bia"
 sudo passwd bia
+wait
 echo "Insira a senha do leticia"
 sudo passwd leticia
+wait
 
 sudo aied validate fcb0b800 checkpoint01 | tee ~/5.15.1.txt
 
