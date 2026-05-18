@@ -19,7 +19,6 @@ sudo aied validar 0000 ola | tee ~/TesteAIED.txt
 ############################################
 
 echo "3.6.1 Criando o ambiente da aula"
-mkdir 3.6
 rm ~/3.6.1.txt || echo ""
 sudo aied validar 98a917ce checkpoint01 | tee ~/3.6.1.txt
 
