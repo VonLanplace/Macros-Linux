@@ -105,12 +105,12 @@ int main(int argc, char *argv[])
 EOF
 gcc copiar.cpp -o copiar
 
-mkdir ~/{temp,bin}
-chmod +t ~/temp
+mkdir ~/{tmp,bin}
+chmod +t ~/tmp
 cp copiar ~/bin/
 chmod 1777 ~/tmp/
 chmod 755 ~/bin/copiar
-chmod 4755 ~/etc/aied/aied_64
+chmod 4755 /etc/aied/aied_64
 
 sudo aied validate 8e9c361c checkpoint04 | tee ~/4.15.4.txt
 
