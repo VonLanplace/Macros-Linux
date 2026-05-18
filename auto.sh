@@ -4,6 +4,7 @@
 ######################
 wget -O /tmp/install.py http://www.aied.com.br/linux/download/install_v2.py
 sudo apt install libjsoncpp-dev -y
+sudo apt install vim -y
 sudo python3 /tmp/install.py
 
 #############################
@@ -207,8 +208,9 @@ sudo mount /dev/sr0 /home/userlinux/cdrom/
 sudo aied validar 8b65b431 checkpoint02 | tee ~/6.15.2.txt
 
 #
-# 6.15.3
+# 7.14.1
 #
 
 ps aux | grep python > ~/typescript
-sudo aied validar prc0001 checkpoint01
+sudo aied validar prc0001 checkpoint01 | tee ~/7.14.1.txt
+rm ~/typescript
