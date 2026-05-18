@@ -108,9 +108,9 @@ gcc copiar.cpp -o copiar
 mkdir ~/{temp,bin}
 chmod +t ~/temp
 cp copiar ~/bin/
-chmod a-x ~/bin/copiar
-chmod u+x ~/bin/copiar
-chmod u+s ~/etc/aied/aied_64
+chmod 777 ~/tmp/
+chmod 755 ~/bin/copiar
+chmod 755 ~/etc/aied/aied_64
 
 sudo aied validate 8e9c361c checkpoint04 | tee ~/4.15.4.txt
 
@@ -121,18 +121,18 @@ echo "5.15.1"
 rm ~/5.15.1.txt || echo ""
 
 sudo groupadd alunos
-useradd -g alunos joao
-useradd leticia
-useradd wanderson
-mkdir -p /hd2/usuarios/
-chomod 755 /hd2/usuarios/
-useradd -m -d /hd2/usuarios/bia bia
+sudo useradd -g alunos joao
+sudo useradd leticia
+sudo useradd wanderson
+sudo mkdir -p /hd2/usuarios/
+sudo chmod 755 /hd2/usuarios/
+sudo useradd -m -d /hd2/usuarios/bia bia
 echo "Insira a senha do wanderson"
-passwd wanderson
+sudo passwd wanderson
 echo "Insira a senha do bia"
-passwd bia
+sudo passwd bia
 echo "Insira a senha do leticia"
-passwd leticia
+sudo passwd leticia
 
 sudo aied validate fcb0b800 checkpoint01 | tee ~/5.15.1.txt
 
