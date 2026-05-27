@@ -64,3 +64,11 @@ wait
 sudo dpkg -r aluno
 wait
 sudo aied validar 092900 checkpoint02
+
+######################
+# 10.5.2 - Corrigido #
+######################
+# Limpeza opcional do pacote instalado se necessário
+sudo apt install net-tools
+wait
+sudo aied validar 092900 checkpoint03
