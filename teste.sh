@@ -54,7 +54,12 @@ sudo dpkg -i aluno_0_0_amd64.deb
 
 # Validação do exercício
 cd ~/Macros-Linux
-sudo aied validar 092900 checkpoint02
+sudo aied validar 092900 checkpoint01
 wait
+
+######################
+# 10.5.2 - Corrigido #
+######################
 # Limpeza opcional do pacote instalado se necessário
-#sudo dpkg -r aluno
+sudo dpkg -r aluno
+sudo aied validar 092900 checkpoint01
