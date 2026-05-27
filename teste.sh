@@ -27,7 +27,7 @@ gcc ~/aluno.c -o ~/pacotes/aluno_0_0_amd64/usr/bin/aluno
 tee ~/pacotes/aluno_0_0_amd64/DEBIAN/control << EOF
 Package: Aluno
 Version: 0.0
-Architecture: amd64
+Architecture: all
 Essential: no
 Priority: optional
 Maintainer: Aied
@@ -54,7 +54,9 @@ sudo dpkg -i aluno_0_0_amd64.deb
 
 # Validação do exercício
 cd ~/Macros-Linux
+dpkg -l | grep aluno
 sudo aied validar 092900 checkpoint02
+wait
 
 # Limpeza opcional do pacote instalado se necessário
 sudo dpkg -r aluno
