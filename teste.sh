@@ -9,6 +9,7 @@ echo "Configurando a interface $interface..."
 
 # 2. Levanta a placa fisicamente usando o ip link set
 sudo ip link set $interface up
+sudo ip addr flush dev $interface
 
 # 3. Adiciona o IP e a Máscara (24 bits = /24) dinamicamente
 sudo ip addr add 10.0.2.3/24 dev $interface
