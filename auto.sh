@@ -237,6 +237,7 @@ sudo ip addr add 10.0.2.3/24 dev $interface
 sudo ip route add default via 10.0.2.2 dev $interface
 
 # 5. Configura o DNS local provisório
+sudo cp /etc/resolv.conf $(pwd)
 sudo sh -c 'echo "nameserver 8.8.8.8" > /etc/resolv.conf'
 
 # 6. Salva as configurações no arquivo de forma definitiva (para o validador ler)
@@ -265,3 +266,7 @@ echo ""
 
 # 7. Executa a validação do seu checkpoint
 sudo aied validar 0002 checkpoint03 | tee ~/9.13.1.txt
+
+sudo cp $(pwd)/interfaces /etc/network/
+sudo cp $(pwd)/resolv.conf /etc
+sudo systemctl restart networking
