@@ -218,7 +218,7 @@ rm ~/typescript
 ##########
 # 9.13.1 #
 ##########
-clear
+
 sudo cp /etc/network/interfaces $(pwd)
 sudo cp /etc/resolv.conf $(pwd)
 
@@ -269,7 +269,6 @@ sudo systemctl restart networking
 ##########
 # 9.13.2 #
 ##########
-clear
 
 sudo cp /etc/network/interfaces $(pwd)
 sudo cp /etc/resolv.conf $(pwd)
@@ -314,7 +313,7 @@ sudo systemctl restart networking
 ##########
 # 9.13.3 #
 ##########
-clear
+
 wget -O  /tmp/install.py http://www.aied.com.br/linux/download/install.py
 
 sudo aied validar 0002 checkpoint05 | tee ~/9.13.3.txt
