@@ -1,6 +1,7 @@
 #
 # 9.13.1
 #
+clear
 sudo cp /etc/network/interfaces $(pwd)
 sudo cp /etc/resolv.conf $(pwd)
 # 1. Mostra as interfaces disponíveis e captura o input do usuário
@@ -54,17 +55,12 @@ sudo cp $(pwd)/interfaces /etc/network/
 sudo cp $(pwd)/resolv.conf /etc/
 sudo systemctl restart networking
 
-#
+########################################################################
 # 9.13.2
-#
+########################################################################
+clear
 sudo cp /etc/network/interfaces $(pwd)
 sudo cp /etc/resolv.conf $(pwd)
-# 1. Mostra as interfaces disponíveis e captura o input do usuário
-ip a
-echo ""
-read -p "Digite o nome da interface ativa (ex: enp1s0): " interface
-
-echo "Configurando a interface $interface..."
 
 # 2. Levanta a placa fisicamente usando o ip link set
 sudo ip link set $interface up
@@ -90,11 +86,11 @@ iface lo inet loopback
 # Interface Estática Dinâmica
 auto $interface
 iface $interface inet dhcp
-    address 10.0.2.3
+#    address 10.0.2.3
     netmask 255.255.255.0
-    gateway 10.0.2.2
+#    gateway 10.0.2.2
     dns-nameservers 8.8.8.8
-    broadcast 10.0.2.255
+#    broadcast 10.0.2.255
 EOF
 sudo systemctl restart networking
 
