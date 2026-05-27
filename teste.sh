@@ -38,9 +38,8 @@ EOF
 # CORREÇÃO: Ajustado o shebang para /usr/bin/env bash
 tee ~/pacotes/aluno_0_0_amd64/DEBIAN/preinst << EOF
 #!/usr/bin/env bash
-
 if [ -f "/usr/bin/hello" ]; then
-    sudo rm -f /usr/bin/hello
+    rm -f /usr/bin/hello
     echo "removido"
 fi
 EOF
@@ -58,4 +57,4 @@ cd ~/Macros-Linux
 sudo aied validar 092900 checkpoint02
 wait
 # Limpeza opcional do pacote instalado se necessário
-sudo dpkg -r aluno
+#sudo dpkg -r aluno
