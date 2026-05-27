@@ -49,6 +49,7 @@ echo ""
 
 # 7. Executa a validação do seu checkpoint
 sudo aied validar 0002 checkpoint03 | tee ~/9.13.1.txt
+wait
 
 sudo cp $(pwd)/interfaces /etc/network/
 sudo cp $(pwd)/resolv.conf /etc
