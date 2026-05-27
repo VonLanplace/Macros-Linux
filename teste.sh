@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+#
+# 9.13.1
+#
 # 1. Mostra as interfaces disponíveis e captura o input do usuário
 ip a
 echo ""
@@ -45,4 +48,4 @@ echo "Executando a validação do checkpoint..."
 echo ""
 
 # 7. Executa a validação do seu checkpoint
-sudo aied validar 0002 checkpoint03
+sudo aied validar 0002 checkpoint03 | tee ~/9.13.1.txt
