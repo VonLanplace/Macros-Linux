@@ -115,9 +115,9 @@ chmod 4755 /etc/aied/aied_64
 
 sudo aied validate 8e9c361c checkpoint04 | tee ~/4.15.4.txt
 
-#
-#
-#
+##########
+# 5.15.1 #
+##########
 echo "5.15.1"
 rm ~/5.15.1.txt || echo ""
 
@@ -140,9 +140,9 @@ wait
 
 sudo aied validate fcb0b800 checkpoint01 | tee ~/5.15.1.txt
 
-#
-#
-#
+##########
+# 5.15.2 #
+##########
 sudo usermod -g alunos leticia
 sudo usermod -g alunos wanderson
 sudo usermod -g alunos bia
@@ -157,16 +157,16 @@ sudo usermod -s /bin/false leticia
 
 sudo aied validate fcb0b800 checkpoint02 | tee ~/5.15.2.txt
 
-#
-#
-#
+##########
+# 5.15.3 #
+##########
 sudo usermod -p '*' root
 sudo usermod -s /bin/false www-data
 sudo aied validate fcb0b800 checkpoint03 | tee ~/5.15.3.txt
 
-#
-#
-#
+##########
+# 5.15.4 #
+##########
 sudo groupadd tomcat
 
 sudo useradd -s /bin/false -g tomcat -d /opt/tomcat -M tomcat
@@ -174,9 +174,9 @@ sudo mkdir -p /opt/tomcat
 sudo chgrp tomcat /opt/tomcat
 sudo aied validate fcb0b800 checkpoint04 | tee ~/5.15.4.txt
 
-#
-# 6.15.1
-#
+##########
+# 6.15.1 #
+##########
 
 echo "=== DISCOS DISPONÍVEIS NO SISTEMA ==="
 lsblk -d -o NAME,SIZE,MODEL | grep -v "loop"
@@ -198,19 +198,123 @@ sudo mount -a
 
 sudo aied validate 8b65b431 checkpoint01 | tee ~/6.15.1.txt
 
-#
-# 6.15.2
-#
+##########
+# 6.15.2 #
+##########
 
 mkdir /home/userlinux/cdrom
 sudo mount /dev/sr0 /home/userlinux/cdrom/
 
 sudo aied validar 8b65b431 checkpoint02 | tee ~/6.15.2.txt
 
-#
-# 7.14.1
-#
+##########
+# 7.14.1 #
+##########
 
 ps aux | grep python > ~/typescript
 sudo aied validar prc0001 checkpoint01 | tee ~/7.14.1.txt
 rm ~/typescript
+
+##########
+# 9.13.1 #
+##########
+clear
+sudo cp /etc/network/interfaces $(pwd)
+sudo cp /etc/resolv.conf $(pwd)
+
+ip a
+echo ""
+read -p "Digite o nome da interface ativa (ex: enp0s3): " interface
+
+echo "Configurando a interface $interface..."
+
+sudo ip link set $interface up
+sudo ip addr flush dev $interface
+
+sudo ip addr add 10.0.2.3/24 dev $interface
+
+sudo ip route add default via 10.0.2.2 dev $interface
+
+sudo sh -c 'echo "nameserver 8.8.8.8" > /etc/resolv.conf'
+
+sudo tee /etc/network/interfaces << EOF
+source /etc/network/interfaces.d/*
+
+# Interface Loopback
+auto lo
+iface lo inet loopback
+
+# Interface Estática Dinâmica
+auto $interface
+iface $interface inet static
+    address 10.0.2.3
+    netmask 255.255.255.0
+    gateway 10.0.2.2
+    dns-nameservers 8.8.8.8
+    broadcast 10.0.2.255
+EOF
+sudo systemctl restart networking
+
+echo "Configuração aplicada com sucesso!"
+echo "Executando a validação do checkpoint..."
+echo ""
+
+sudo aied validar 0002 checkpoint03 | tee ~/9.13.1.txt
+wait
+
+sudo cp $(pwd)/interfaces /etc/network/
+sudo cp $(pwd)/resolv.conf /etc/
+sudo systemctl restart networking
+
+##########
+# 9.13.2 #
+##########
+clear
+
+sudo cp /etc/network/interfaces $(pwd)
+sudo cp /etc/resolv.conf $(pwd)
+
+echo "Configurando o arquivo interfaces para DHCP..."
+
+sudo tee /etc/network/interfaces << EOF
+source /etc/network/interfaces.d/*
+
+# Interface Loopback
+auto lo
+iface lo inet loopback
+
+# Interface configurada como DHCP
+auto $interface
+iface $interface inet dhcp
+EOF
+
+sudo systemctl restart networking
+
+sudo ip link set $interface up
+sudo ip addr flush dev $interface
+
+sudo ip addr add 10.0.2.3/24 broadcast 10.0.2.255 dev $interface
+
+sudo ip route add default via 10.0.2.2 dev $interface
+
+sudo sh -c 'echo "nameserver 8.8.8.8" > /etc/resolv.conf'
+
+echo "Executando a validação do checkpoint..."
+echo ""
+
+sudo aied validar 0002 checkpoint04 | tee ~/9.13.2.txt
+
+wait
+
+sudo cp $(pwd)/interfaces /etc/network/interfaces
+sudo cp $(pwd)/resolv.conf /etc/resolv.conf
+sudo systemctl restart networking
+
+
+##########
+# 9.13.3 #
+##########
+clear
+wget -O  /tmp/install.py http://www.aied.com.br/linux/download/install.py
+
+sudo aied validar 0002 checkpoint05 | tee ~/9.13.3.txt
