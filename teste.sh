@@ -63,11 +63,6 @@ sudo systemctl restart networking
 ########################################################################
 clear
 
-# Captura a interface automaticamente (para evitar erros de variável vazia)
-ip a
-echo ""
-read -p "Digite o nome da interface ativa (ex: enp0s3): " interface
-
 # 1. Faz o backup dos arquivos originais
 sudo cp /etc/network/interfaces $(pwd)
 sudo cp /etc/resolv.conf $(pwd)
