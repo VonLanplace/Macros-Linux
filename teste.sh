@@ -1,7 +1,8 @@
 ########################################################################
 # 10.5.2 - Corrigido
 ########################################################################
-mkdir -p ~/pacotes/aluno_0_0_amd64/{DEBIAN,usr/bin/}
+mkdir -p ~/pacotes/aluno_0_0_amd64/usr/bin
+mkdir -p ~/pacotes/aluno_0_0_amd64/DEBIAN
 
 read -p "Digite o seu identificador de aluno (ou aperte Enter para o padrão): " input_aluno
 
@@ -54,9 +55,7 @@ sudo dpkg -i aluno_0_0_amd64.deb
 
 # Validação do exercício
 cd ~/Macros-Linux
-dpkg -l | grep aluno
 sudo aied validar 092900 checkpoint02
 wait
-
 # Limpeza opcional do pacote instalado se necessário
 sudo dpkg -r aluno
