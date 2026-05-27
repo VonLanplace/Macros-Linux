@@ -62,4 +62,5 @@ wait
 ######################
 # Limpeza opcional do pacote instalado se necessário
 sudo dpkg -r aluno
+wait
 sudo aied validar 092900 checkpoint01
