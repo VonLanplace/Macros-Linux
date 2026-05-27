@@ -94,8 +94,8 @@ sudo systemctl restart networking
 sudo ip link set $interface up
 sudo ip addr flush dev $interface
 
-# 5. Configura por comando IP: Endereço e Máscara (24 bits = /24)
-sudo ip addr add 10.0.2.3/24 dev $interface
+# 5. Configura por comando IP: Endereço, Máscara e Broadcast
+sudo ip addr add 10.0.2.3/24 broadcast 10.0.2.255 dev $interface
 
 # 6. Configura por comando IP: Gateway
 sudo ip route add default via 10.0.2.2 dev $interface
