@@ -21,6 +21,7 @@ sudo ip route add default via 10.0.2.2 dev $interface
 sudo sh -c 'echo "nameserver 8.8.8.8" > /etc/resolv.conf'
 
 # 6. Salva as configurações no arquivo de forma definitiva (para o validador ler)
+sudo cp /etc/network/interfaces $(pwd)
 sudo tee /etc/network/interfaces << EOF
 source /etc/network/interfaces.d/*
 
@@ -35,7 +36,9 @@ iface $interface inet static
     netmask 255.255.255.0
     gateway 10.0.2.2
     dns-nameservers 8.8.8.8
+    broadcast 10.0.2.255
 EOF
+sudo systemctl restart networking
 
 echo "Configuração aplicada com sucesso!"
 echo "Executando a validação do checkpoint..."
