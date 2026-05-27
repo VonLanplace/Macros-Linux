@@ -58,24 +58,23 @@ sudo systemctl restart networking
 ########################################################################
 # 9.13.2
 ########################################################################
+########################################################################
+# 9.13.2
+########################################################################
 clear
+
+# Captura a interface automaticamente (para evitar erros de variável vazia)
+ip a
+echo ""
+read -p "Digite o nome da interface ativa (ex: enp0s3): " interface
+
+# 1. Faz o backup dos arquivos originais
 sudo cp /etc/network/interfaces $(pwd)
 sudo cp /etc/resolv.conf $(pwd)
 
-# 2. Levanta a placa fisicamente usando o ip link set
-sudo ip link set $interface up
-sudo ip addr flush dev $interface
+echo "Configurando o arquivo interfaces para DHCP..."
 
-# 3. Adiciona o IP e a Máscara (24 bits = /24) dinamicamente
-sudo ip addr add 10.0.2.3/24 dev $interface
-
-# 4. Adiciona a rota padrão (Gateway)
-sudo ip route add default via 10.0.2.2 dev $interface
-
-# 5. Configura o DNS local provisório
-sudo sh -c 'echo "nameserver 8.8.8.8" > /etc/resolv.conf'
-
-# 6. Salva as configurações no arquivo de forma definitiva (para o validador ler)
+# 2. Salva no arquivo definitivo como AUTO DHCP (Requisito do exercício)
 sudo tee /etc/network/interfaces << EOF
 source /etc/network/interfaces.d/*
 
@@ -83,26 +82,34 @@ source /etc/network/interfaces.d/*
 auto lo
 iface lo inet loopback
 
-# Interface Estática Dinâmica
+# Interface configurada como DHCP
 auto $interface
 iface $interface inet dhcp
-#    address 10.0.2.3
-    netmask 255.255.255.0
-#    gateway 10.0.2.2
-    dns-nameservers 8.8.8.8
-#    broadcast 10.0.2.255
 EOF
+
+# 3. Reinicia o serviço de rede para aplicar o DHCP do arquivo
 sudo systemctl restart networking
 
-echo "Configuração aplicada com sucesso!"
+# 4. Levanta a placa fisicamente e limpa IPs antigos do DHCP
+sudo ip link set $interface up
+sudo ip addr flush dev $interface
+
+# 5. Configura por comando IP: Endereço e Máscara (24 bits = /24)
+sudo ip addr add 10.0.2.3/24 dev $interface
+
+# 6. Configura por comando IP: Gateway
+sudo ip route add default via 10.0.2.2 dev $interface
+
+sudo sh -c 'echo "nameserver 8.8.8.8" > /etc/resolv.conf'
+
 echo "Executando a validação do checkpoint..."
 echo ""
 
-# 7. Executa a validação do seu checkpoint
 sudo aied validar 0002 checkpoint04 | tee ~/9.13.2.txt
+
 wait
 
-sudo cp $(pwd)/interfaces /etc/network/
-sudo cp $(pwd)/resolv.conf /etc/
+sudo cp $(pwd)/interfaces /etc/network/interfaces
+sudo cp $(pwd)/resolv.conf /etc/resolv.conf
 sudo systemctl restart networking
 
