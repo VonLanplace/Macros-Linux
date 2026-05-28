@@ -13,7 +13,7 @@ sudo python3 /tmp/install.py
 
 echo "Teste de ambiente"
 rm ~/TesteAIED.txt || echo ""
-sudo aied validar 0000 ola | tee ~/TesteAIED.txt
+echo "y" | sudo aied validar 0000 ola | tee ~/TesteAIED.txt
 
 ############################################
 # Prática 3.6.1 Criando o ambiente da aula #
@@ -21,7 +21,7 @@ sudo aied validar 0000 ola | tee ~/TesteAIED.txt
 
 echo "3.6.1 Criando o ambiente da aula"
 rm ~/3.6.1.txt || echo ""
-sudo aied validar 98a917ce checkpoint01 | tee ~/3.6.1.txt
+echo "y" | sudo aied validar 98a917ce checkpoint01 | tee ~/3.6.1.txt
 
 ##################
 # Prática 4.15.1 #
@@ -38,7 +38,7 @@ echo "444" > ~/diretorio2/arquivo4
 echo "555" > ~/diretorio2/arquivo5
 echo "666" > ~/diretorio2/arquivo6
 
-sudo aied validate 8e9c361c checkpoint01 | tee ~/4.15.1.txt
+echo "y" | sudo aied validate 8e9c361c checkpoint01 | tee ~/4.15.1.txt
 
 ##################
 # Prática 4.15.2 #
@@ -50,7 +50,7 @@ cp ~/diretorio1/arquivo1 ~/diretorio3/arquivo1
 rm ~/diretorio2/arquivo4
 mv ~/diretorio2/arquivo5 ~/diretorio3/
 
-sudo aied validate 8e9c361c checkpoint02 | tee ~/4.15.2.txt
+echo "y" | sudo aied validate 8e9c361c checkpoint02 | tee ~/4.15.2.txt
 
 ##################
 # Prática 4.15.3 #
@@ -61,7 +61,7 @@ rm ~/4.15.3.txt || echo ""
 ln -s ~/diretorio1/arquivo3 ~/diretorio3/arquivo3
 ln ~/diretorio2/arquivo6 ~/diretorio3/arquivo6
 
-sudo aied validate 8e9c361c checkpoint03 | tee ~/4.15.3.txt
+echo "y" | sudo aied validate 8e9c361c checkpoint03 | tee ~/4.15.3.txt
 
 ##################
 # Prática 4.15.4 #
@@ -113,7 +113,7 @@ chmod 1777 ~/tmp/
 chmod 755 ~/bin/copiar
 chmod 4755 /etc/aied/aied_64
 
-sudo aied validate 8e9c361c checkpoint04 | tee ~/4.15.4.txt
+echo "y" | sudo aied validate 8e9c361c checkpoint04 | tee ~/4.15.4.txt
 
 ##########
 # 5.15.1 #
@@ -129,16 +129,16 @@ sudo mkdir -p /hd2/usuarios/
 sudo chmod 755 /hd2/usuarios/
 sudo useradd -m -d /hd2/usuarios/bia bia
 echo "Insira a senha do wanderson"
-sudo passwd wanderson
+yes | sudo passwd wanderson
 wait
 echo "Insira a senha do bia"
-sudo passwd bia
+yes | sudo passwd bia
 wait
 echo "Insira a senha do leticia"
-sudo passwd leticia
+yes | sudo passwd leticia
 wait
 
-sudo aied validate fcb0b800 checkpoint01 | tee ~/5.15.1.txt
+echo "y" | sudo aied validate fcb0b800 checkpoint01 | tee ~/5.15.1.txt
 
 ##########
 # 5.15.2 #
