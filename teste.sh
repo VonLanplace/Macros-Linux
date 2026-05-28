@@ -41,7 +41,7 @@ sudo aied validar 8ab001 checkpoint02
 ######################
 
 tee ~/atividadeiii.py << EOF
-#!/usr/bin/env python3
+#!/usr/bin/python2
 print("$NOME_ALUNO")
 EOF
 
@@ -74,7 +74,7 @@ sudo aied validar 8ab001 checkpoint04
 tee ~/atividadev.sh << 'EOF'
 #!/bin/bash
 NUM=$1
-if [ "$NUM" -gt 2 ]; then
+if [ "$NUM" -gt 10 ]; then
   printf "maior"
 else
   printf "menor ou igual"
