@@ -65,7 +65,7 @@ chmod +x *.sh
 
 ```
 
-⚠️ **Atenção:** O sistema fará algumas pausas controladas para solicitar dados e interações do usuário. Fique atento ao terminal: **as recomendações de respostas esperadas estarão listadas entre parênteses `()**`.
+⚠️ **Atenção:** O sistema fará algumas pausas controladas para solicitar dados e interações do usuário. Fique atento ao terminal: **as recomendações de respostas esperadas estarão listadas entre parênteses `()`**.
 
 ---
 
