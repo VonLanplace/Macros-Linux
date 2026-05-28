@@ -44,7 +44,7 @@ su root
 apt update && apt install git -y
 
 # Clonar o repositório oficial de macros
-git clone [https://github.com/VonLanplace/Macros-Linux.git](https://github.com/VonLanplace/Macros-Linux.git)
+git clone https://github.com/VonLanplace/Macros-Linux.git
 
 ```
 
