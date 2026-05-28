@@ -490,7 +490,7 @@ wait
 python3 -m pip install network --break-system-packages 2>/dev/null || python3 -m pip install network
 
 wait
-sudo aied validar py0001 checkpoint01 | tee ~/12.6.1
+sudo aied validar py0001 checkpoint01 | tee ~/12.6.1.txt
 
 ######################
 # 12.6.2
@@ -504,7 +504,7 @@ EOF
 chmod +x ~/pythonscript1.py
 wait
 
-sudo aied validar py0001 checkpoint02 | tee ~/12.6.2
+sudo aied validar py0001 checkpoint02 | tee ~/12.6.2.txt
 
 ######################
 # 12.6.3
@@ -527,7 +527,7 @@ EOF
 chmod +x ~/pythonscript2.py
 wait
 
-sudo aied validar py0001 checkpoint03 | tee ~/12.6.3
+sudo aied validar py0001 checkpoint03 | tee ~/12.6.3.txt
 
 ######################
 # 12.6.4
@@ -537,6 +537,7 @@ mkdir -p /home/userlinux
 
 tee /home/userlinux/pythonscript3.py << 'EOF'
 #!/usr/bin/python3
+import os
 
 with open("/etc/passwd", "r") as arquivo:
     linhas = arquivo.readlines()
@@ -555,7 +556,7 @@ EOF
 chmod +x /home/userlinux/pythonscript3.py
 wait
 
-sudo aied validar py0001 checkpoint04 | tee ~/12.6.4
+sudo aied validar py0001 checkpoint04 | tee ~/12.6.4.txt
 
 ######################
 # 12.6.5
@@ -579,7 +580,7 @@ EOF
 chmod +x /home/userlinux/pythonscript4.py
 wait
 
-sudo aied validar py0001 checkpoint05 | tee ~/12.6.5
+sudo aied validar py0001 checkpoint05 | tee ~/12.6.5.txt
 
 ##########
 # 14.4.1 #
@@ -589,7 +590,7 @@ sudo apt install at -y
 echo "touch /tmp/teste.txt" | at 12:00
 wait
 
-sudo aied validar 4d4f6ae checkpoint01 | tee ~/14.4.1
+sudo aied validar 4d4f6ae checkpoint01 | tee ~/14.4.1.txt
 ##########
 # 14.4.2 #
 ##########
@@ -611,5 +612,5 @@ chmod +x ~/script.sh
 (crontab -l 2>/dev/null; echo "0 12 * * * /bin/bash ~/script.sh") | crontab -
 wait
 
-sudo aied validar d7a527b checkpoint01 | tee ~/14.4.2
+sudo aied validar d7a527b checkpoint01 | tee ~/14.4.2.txt
 
