@@ -4,14 +4,13 @@
 ######################
 wget -O /tmp/install.py http://www.aied.com.br/linux/download/install_v2.py
 sudo apt install libjsoncpp-dev -y
-sudo apt install vim -y
+#sudo apt install vim -y
 sudo python3 /tmp/install.py
 
 #############################
 # Validação inicial do AIED #
 #############################
 
-echo "Teste de ambiente"
 rm ~/TesteAIED.txt || echo ""
 echo "y" | sudo aied validar 0000 ola | tee ~/TesteAIED.txt
 
@@ -19,7 +18,6 @@ echo "y" | sudo aied validar 0000 ola | tee ~/TesteAIED.txt
 # Prática 3.6.1 Criando o ambiente da aula #
 ############################################
 
-echo "3.6.1 Criando o ambiente da aula"
 rm ~/3.6.1.txt || echo ""
 echo "y" | sudo aied validar 98a917ce checkpoint01 | tee ~/3.6.1.txt
 
@@ -27,7 +25,6 @@ echo "y" | sudo aied validar 98a917ce checkpoint01 | tee ~/3.6.1.txt
 # Prática 4.15.1 #
 ##################
 
-echo "4.15.1 Criando Diretórios e arquivos no GNU/Linux"
 rm ~/4.15.1.txt || echo ""
 rm -r ~/diretorio*
 mkdir ~/diretorio{1,2,3}
@@ -43,7 +40,7 @@ echo "y" | sudo aied validate 8e9c361c checkpoint01 | tee ~/4.15.1.txt
 ##################
 # Prática 4.15.2 #
 ##################
-echo "4.15.2"
+
 rm ~/4.15.2.txt || echo ""
 
 cp ~/diretorio1/arquivo1 ~/diretorio3/arquivo1
@@ -55,7 +52,7 @@ echo "y" | sudo aied validate 8e9c361c checkpoint02 | tee ~/4.15.2.txt
 ##################
 # Prática 4.15.3 #
 ##################
-echo "4.15.3"
+
 rm ~/4.15.3.txt || echo ""
 
 ln -s ~/diretorio1/arquivo3 ~/diretorio3/arquivo3
@@ -66,7 +63,7 @@ echo "y" | sudo aied validate 8e9c361c checkpoint03 | tee ~/4.15.3.txt
 ##################
 # Prática 4.15.4 #
 ##################
-echo "4.15.4"
+
 rm ~/4.15.4.txt || echo ""
 rm ~/copiar*
 cat <<'EOF' > copiar.cpp
@@ -118,7 +115,7 @@ echo "y" | sudo aied validate 8e9c361c checkpoint04 | tee ~/4.15.4.txt
 ##########
 # 5.15.1 #
 ##########
-echo "5.15.1"
+
 rm ~/5.15.1.txt || echo ""
 
 sudo groupadd alunos
@@ -155,14 +152,14 @@ sudo usermod -L leticia
 
 sudo usermod -s /bin/false leticia
 
-sudo aied validate fcb0b800 checkpoint02 | tee ~/5.15.2.txt
+echo "y" | sudo aied validate fcb0b800 checkpoint02 | tee ~/5.15.2.txt
 
 ##########
 # 5.15.3 #
 ##########
 sudo usermod -p '*' root
 sudo usermod -s /bin/false www-data
-sudo aied validate fcb0b800 checkpoint03 | tee ~/5.15.3.txt
+echo "y" | sudo aied validate fcb0b800 checkpoint03 | tee ~/5.15.3.txt
 
 ##########
 # 5.15.4 #
@@ -172,7 +169,7 @@ sudo groupadd tomcat
 sudo useradd -s /bin/false -g tomcat -d /opt/tomcat -M tomcat
 sudo mkdir -p /opt/tomcat
 sudo chgrp tomcat /opt/tomcat
-sudo aied validate fcb0b800 checkpoint04 | tee ~/5.15.4.txt
+echo "y" | sudo aied validate fcb0b800 checkpoint04 | tee ~/5.15.4.txt
 
 ##########
 # 6.15.1 #
@@ -196,7 +193,7 @@ echo "UUID=$(sudo lsblk -no UUID $PARTITION) /backup ext4 defaults,nofail 0 2" |
 sudo systemctl daemon-reload
 sudo mount -a
 
-sudo aied validate 8b65b431 checkpoint01 | tee ~/6.15.1.txt
+echo "y" | sudo aied validate 8b65b431 checkpoint01 | tee ~/6.15.1.txt
 
 ##########
 # 6.15.2 #
@@ -205,14 +202,14 @@ sudo aied validate 8b65b431 checkpoint01 | tee ~/6.15.1.txt
 mkdir /home/userlinux/cdrom
 sudo mount /dev/sr0 /home/userlinux/cdrom/
 
-sudo aied validar 8b65b431 checkpoint02 | tee ~/6.15.2.txt
+echo "y" | sudo aied validar 8b65b431 checkpoint02 | tee ~/6.15.2.txt
 
 ##########
 # 7.14.1 #
 ##########
 
 ps aux | grep python > ~/typescript
-sudo aied validar prc0001 checkpoint01 | tee ~/7.14.1.txt
+echo "y" | sudo aied validar prc0001 checkpoint01 | tee ~/7.14.1.txt
 rm ~/typescript
 
 ##########
@@ -259,7 +256,7 @@ echo "Configuração aplicada com sucesso!"
 echo "Executando a validação do checkpoint..."
 echo ""
 
-sudo aied validar 0002 checkpoint03 | tee ~/9.13.1.txt
+echo "y" | sudo aied validar 0002 checkpoint03 | tee ~/9.13.1.txt
 wait
 
 sudo cp $(pwd)/interfaces /etc/network/
@@ -301,7 +298,7 @@ sudo sh -c 'echo "nameserver 8.8.8.8" > /etc/resolv.conf'
 echo "Executando a validação do checkpoint..."
 echo ""
 
-sudo aied validar 0002 checkpoint04 | tee ~/9.13.2.txt
+echo "y" | sudo aied validar 0002 checkpoint04 | tee ~/9.13.2.txt
 
 wait
 
@@ -316,7 +313,7 @@ sudo systemctl restart networking
 
 wget -O  /tmp/install.py http://www.aied.com.br/linux/download/install.py
 
-sudo aied validar 0002 checkpoint05 | tee ~/9.13.3.txt
+echo "y" | sudo aied validar 0002 checkpoint05 | tee ~/9.13.3.txt
 
 
 ##########
@@ -375,7 +372,7 @@ sudo dpkg -i aluno_0_0_amd64.deb
 
 # Validação do exercício
 cd ~/Macros-Linux
-sudo aied validar 092900 checkpoint01 | tee ~/10.5.1.txt
+echo "y" | sudo aied validar 092900 checkpoint01 | tee ~/10.5.1.txt
 wait
 
 ##########
@@ -384,7 +381,7 @@ wait
 # Limpeza opcional do pacote instalado se necessário
 sudo dpkg -r aluno
 wait
-sudo aied validar 092900 checkpoint02 | tee ~/10.5.2.txt
+echo "y" | sudo aied validar 092900 checkpoint02 | tee ~/10.5.2.txt
 
 ##########
 # 10.5.3 #
@@ -392,7 +389,7 @@ sudo aied validar 092900 checkpoint02 | tee ~/10.5.2.txt
 # Limpeza opcional do pacote instalado se necessário
 sudo apt install net-tools
 wait
-sudo aied validar 092900 checkpoint03 | tee ~/10.5.3.txt
+echo "y" | sudo aied validar 092900 checkpoint03 | tee ~/10.5.3.txt
 
 ######################
 # 11.6.1
@@ -408,7 +405,7 @@ EOF
 
 chmod +x ~/atividadei.sh
 
-sudo aied validar 8ab001 checkpoint01 | tee ~/11.6.1.txt
+echo "y" | sudo aied validar 8ab001 checkpoint01 | tee ~/11.6.1.txt
 
 ######################
 # 11.6.2
@@ -429,7 +426,7 @@ EOF
 
 chmod +x ~/atividadeii.sh
 
-sudo aied validar 8ab001 checkpoint02 | tee ~/11.6.2.txt
+echo "y" | sudo aied validar 8ab001 checkpoint02 | tee ~/11.6.2.txt
 
 ######################
 # 11.6.3
@@ -442,7 +439,7 @@ EOF
 
 chmod +x ~/atividadeiii.py
 
-sudo aied validar 8ab001 checkpoint03 | tee ~/11.6.3.txt
+echo "y" | sudo aied validar 8ab001 checkpoint03 | tee ~/11.6.3.txt
 
 ######################
 # 11.6.4
@@ -460,7 +457,7 @@ EOF
 
 chmod +x ~/atividadeiv.sh
 
-sudo aied validar 8ab001 checkpoint04 | tee ~/11.6.4.txt
+echo "y" | sudo aied validar 8ab001 checkpoint04 | tee ~/11.6.4.txt
 
 ######################
 # 11.6.5
@@ -478,7 +475,7 @@ EOF
 
 chmod +x ~/atividadev.sh
 
-sudo aied validar 8ab001 checkpoint05 | tee ~/11.6.5.txt
+echo "y" | sudo aied validar 8ab001 checkpoint05 | tee ~/11.6.5.txt
 
 ######################
 # 12.6.1
@@ -490,7 +487,7 @@ wait
 python3 -m pip install network --break-system-packages 2>/dev/null || python3 -m pip install network
 
 wait
-sudo aied validar py0001 checkpoint01 | tee ~/12.6.1.txt
+echo "y" | sudo aied validar py0001 checkpoint01 | tee ~/12.6.1.txt
 
 ######################
 # 12.6.2
@@ -504,7 +501,7 @@ EOF
 chmod +x ~/pythonscript1.py
 wait
 
-sudo aied validar py0001 checkpoint02 | tee ~/12.6.2.txt
+echo "y" | sudo aied validar py0001 checkpoint02 | tee ~/12.6.2.txt
 
 ######################
 # 12.6.3
@@ -527,7 +524,7 @@ EOF
 chmod +x ~/pythonscript2.py
 wait
 
-sudo aied validar py0001 checkpoint03 | tee ~/12.6.3.txt
+echo "y" | sudo aied validar py0001 checkpoint03 | tee ~/12.6.3.txt
 
 ######################
 # 12.6.4
@@ -556,7 +553,7 @@ EOF
 chmod +x /home/userlinux/pythonscript3.py
 wait
 
-sudo aied validar py0001 checkpoint04 | tee ~/12.6.4.txt
+echo "y" | sudo aied validar py0001 checkpoint04 | tee ~/12.6.4.txt
 
 ######################
 # 12.6.5
@@ -580,7 +577,7 @@ EOF
 chmod +x /home/userlinux/pythonscript4.py
 wait
 
-sudo aied validar py0001 checkpoint05 | tee ~/12.6.5.txt
+echo "y" | sudo aied validar py0001 checkpoint05 | tee ~/12.6.5.txt
 
 ##########
 # 14.4.1 #
@@ -590,7 +587,7 @@ sudo apt install at -y
 echo "touch /tmp/teste.txt" | at 12:00
 wait
 
-sudo aied validar 4d4f6ae checkpoint01 | tee ~/14.4.1.txt
+echo "y" | sudo aied validar 4d4f6ae checkpoint01 | tee ~/14.4.1.txt
 ##########
 # 14.4.2 #
 ##########
@@ -612,5 +609,18 @@ chmod +x ~/script.sh
 (crontab -l 2>/dev/null; echo "0 12 * * * /bin/bash ~/script.sh") | crontab -
 wait
 
-sudo aied validar d7a527b checkpoint01 | tee ~/14.4.2.txt
+echo "y" | sudo aied validar d7a527b checkpoint01 | tee ~/14.4.2.txt
 
+##########
+# END    #
+##########
+cd 
+sudo rm -r
+shopt -s extglob
+rm -rf !(*.txt)
+git init
+git branch -m main
+git add .
+git commit -m "first commit"
+git status
+echo "connecte com o repositorio e de um push para salvar"
