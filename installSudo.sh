@@ -12,3 +12,4 @@ fi
 chmod -R 777 $(pwd)
 
 su - $(id -nu 1000)
+exit

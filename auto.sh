@@ -614,12 +614,17 @@ echo "y" | sudo aied validar d7a527b checkpoint01 | tee ~/14.4.2.txt
 ##########
 # END    #
 ##########
-cd ~
+cd ~/
 shopt -s extglob
-rm -rf !(*.txt)
+sudo rm -rf !(*.txt)
+
 git init
 git branch -m main
-git add .
+
+git add *.txt
+
 git commit -m "first commit"
 git status
-echo "connecte com o repositorio e de um push para salvar"
+
+echo "Conecte com o repositorio e de um push para salvar"
+exit
