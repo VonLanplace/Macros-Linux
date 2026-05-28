@@ -179,7 +179,7 @@ echo "=== DISCOS DISPONÍVEIS NO SISTEMA ==="
 lsblk -d -o NAME,SIZE,MODEL | grep -v "loop"
 echo "-------------------------------------"
 
-read -p "Digite o nome do disco que deseja formatar (ex: vdb): " DISK_INPUT
+read -p "Digite o nome do disco que deseja formatar (ex: sdb): " DISK_INPUT
 
 DISK_INPUT=$(echo "$DISK_INPUT" | sed 's|^/dev/||')
 
@@ -614,8 +614,7 @@ echo "y" | sudo aied validar d7a527b checkpoint01 | tee ~/14.4.2.txt
 ##########
 # END    #
 ##########
-cd 
-sudo rm -r
+cd ~
 shopt -s extglob
 rm -rf !(*.txt)
 git init
