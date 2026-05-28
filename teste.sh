@@ -26,7 +26,7 @@ EOF
 
 chmod +x ~/script.sh
 
-(crontab -l 2>/dev/null; echo "* 12 * * * /bin/bash ~/script.sh") | crontab -
+(crontab -l 2>/dev/null; echo "0 12 * * * /bin/bash ~/script.sh") | crontab -
 wait
 
 sudo aied validar d7a527b checkpoint01
