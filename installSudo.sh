@@ -12,10 +12,7 @@ fi
 ##########################
 # Instalação componentes #
 ##########################
-sudo apt update && sudo apt install build-essential g++ gcc
-libblkid-dev libsfml-dev libcurl4-openssl-dev curl wget iputils-ping
-iputils-tracepath net-tools lm-sensors git openssh-server ansifilter
--y
+sudo apt update && sudo apt install build-essential g++ gcc libblkid-dev libsfml-dev libcurl4-openssl-dev curl wget iputils-ping iputils-tracepath net-tools lm-sensors git openssh-server ansifilter -y
 sudo systemctl enable --now ssh
 
 #
