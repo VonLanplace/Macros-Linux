@@ -375,7 +375,7 @@ sudo dpkg -i aluno_0_0_amd64.deb
 
 # Validação do exercício
 cd ~/Macros-Linux
-sudo aied validar 092900 checkpoint01
+sudo aied validar 092900 checkpoint01 | tee ~/10.5.1.txt
 wait
 
 ##########
@@ -384,7 +384,7 @@ wait
 # Limpeza opcional do pacote instalado se necessário
 sudo dpkg -r aluno
 wait
-sudo aied validar 092900 checkpoint02
+sudo aied validar 092900 checkpoint02 | tee ~/10.5.2.txt
 
 ##########
 # 10.5.3 #
@@ -392,4 +392,90 @@ sudo aied validar 092900 checkpoint02
 # Limpeza opcional do pacote instalado se necessário
 sudo apt install net-tools
 wait
-sudo aied validar 092900 checkpoint03
+sudo aied validar 092900 checkpoint03 | tee ~/10.5.3.txt
+
+######################
+# 11.6.1
+######################
+
+read -p "Digite seu nome: " NOME_ALUNO
+NOME_ALUNO="${NOME_ALUNO:-AlunoAIED}"
+
+tee ~/atividadei.sh << EOF
+#!/bin/bash
+printf "%s\n" "$NOME_ALUNO"
+EOF
+
+chmod +x ~/atividadei.sh
+
+sudo aied validar 8ab001 checkpoint01 | tee ~/11.6.1.txt
+
+######################
+# 11.6.2
+######################
+
+tee ~/atividadeii.sh << 'EOF'
+#!/bin/bash
+# Como precisamos do nome do aluno aqui dentro, vamos ler do script anterior ou deixar fixo
+# Se o validador testar com o arquivo estático, precisamos gerar com o nome real.
+# Para misturar variáveis locais e externas, usamos a barra invertida \ antes do $ local:
+EOF
+
+tee ~/atividadeii.sh << EOF
+#!/bin/bash
+declare x="$NOME_ALUNO"
+printf "%s\n" "\$x"
+EOF
+
+chmod +x ~/atividadeii.sh
+
+sudo aied validar 8ab001 checkpoint02 | tee ~/11.6.2.txt
+
+######################
+# 11.6.3
+######################
+
+tee ~/atividadeiii.py << EOF
+#!/usr/bin/python2
+print("$NOME_ALUNO")
+EOF
+
+chmod +x ~/atividadeiii.py
+
+sudo aied validar 8ab001 checkpoint03 | tee ~/11.6.3.txt
+
+######################
+# 11.6.4
+######################
+
+tee ~/atividadeiv.sh << 'EOF'
+#!/bin/bash
+NUM=$1
+if (( NUM % 2 == 0 )); then
+  printf "par"
+else
+  printf "impar"
+fi
+EOF
+
+chmod +x ~/atividadeiv.sh
+
+sudo aied validar 8ab001 checkpoint04 | tee ~/11.6.4.txt
+
+######################
+# 11.6.5
+######################
+
+tee ~/atividadev.sh << 'EOF'
+#!/bin/bash
+NUM=$1
+if [ "$NUM" -gt 10 ]; then
+  printf "maior"
+else
+  printf "menor ou igual"
+fi
+EOF
+
+chmod +x ~/atividadev.sh
+
+sudo aied validar 8ab001 checkpoint05 | tee ~/11.6.5.txt

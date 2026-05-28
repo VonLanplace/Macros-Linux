@@ -1,86 +1,101 @@
 #!/usr/bin/env bash
 ######################
-# 11.6.1
+# 12.6.1
+######################
+sudo apt update -y
+sudo apt install python3-pip -y
+
+wait
+python3 -m pip install network --break-system-packages 2>/dev/null || python3 -m pip install network
+
+wait
+sudo aied validar py0001 checkpoint01 | tee ~/12.6.1
+
+######################
+# 12.6.2
 ######################
 
-read -p "Digite seu nome: " NOME_ALUNO
-NOME_ALUNO="${NOME_ALUNO:-AlunoAIED}"
+tee ~/pythonscript1.py << 'EOF'
+#!/usr/bin/python3
+import os
+print(os.getenv("LOGNAME"))
+EOF
+chmod +x ~/pythonscript1.py
+wait
 
-tee ~/atividadei.sh << EOF
-#!/bin/bash
-printf "%s\n" "$NOME_ALUNO"
+sudo aied validar py0001 checkpoint02 | tee ~/12.6.2
+
+######################
+# 12.6.3
+######################
+
+tee ~/pythonscript2.py << 'EOF'
+#!/usr/bin/python3
+import hashlib
+import sys
+
+if len(sys.argv) < 2:
+    argumento = "Aied"
+else:
+    argumento = sys.argv[1]
+
+MD5 = hashlib.md5(argumento.encode('utf-8')).hexdigest()
+
+print(MD5)
+EOF
+chmod +x ~/pythonscript2.py
+wait
+
+sudo aied validar py0001 checkpoint03 | tee ~/12.6.3
+
+######################
+# 12.6.4
+######################
+
+mkdir -p /home/userlinux
+
+tee /home/userlinux/pythonscript3.py << 'EOF'
+#!/usr/bin/python3
+
+with open("/etc/passwd", "r") as arquivo:
+    linhas = arquivo.readlines()
+
+for linha in linhas:
+    dados = linha.strip().split(':')
+    
+    if len(dados) >= 7:
+        usuario = dados[0]
+        shell = dados[6]
+        
+        if shell == "/bin/bash":
+            print(usuario)
 EOF
 
-chmod +x ~/atividadei.sh
+chmod +x /home/userlinux/pythonscript3.py
+wait
 
-sudo aied validar 8ab001 checkpoint01
+sudo aied validar py0001 checkpoint04 | tee ~/12.6.4
 
 ######################
-# 11.6.2
+# 12.6.5
 ######################
 
-tee ~/atividadeii.sh << 'EOF'
-#!/bin/bash
-# Como precisamos do nome do aluno aqui dentro, vamos ler do script anterior ou deixar fixo
-# Se o validador testar com o arquivo estático, precisamos gerar com o nome real.
-# Para misturar variáveis locais e externas, usamos a barra invertida \ antes do $ local:
+tee /home/userlinux/pythonscript4.py << 'EOF'
+#!/usr/bin/python3
+import sys
+import os
+
+if len(sys.argv) < 2:
+    valor = "Aied\n"
+else:
+    valor = sys.argv[1] + "\n"
+
+fd = os.open("/tmp/argumento.txt", os.O_RDWR | os.O_CREAT | os.O_TRUNC, 0o644)
+os.write(fd, valor.encode())
+os.close(fd)
 EOF
 
-tee ~/atividadeii.sh << EOF
-#!/bin/bash
-declare x="$NOME_ALUNO"
-printf "%s\n" "\$x"
-EOF
+chmod +x /home/userlinux/pythonscript4.py
+wait
 
-chmod +x ~/atividadeii.sh
-
-sudo aied validar 8ab001 checkpoint02
-
-######################
-# 11.6.3
-######################
-
-tee ~/atividadeiii.py << EOF
-#!/usr/bin/python2
-print("$NOME_ALUNO")
-EOF
-
-chmod +x ~/atividadeiii.py
-
-sudo aied validar 8ab001 checkpoint03
-
-######################
-# 11.6.4
-######################
-
-tee ~/atividadeiv.sh << 'EOF'
-#!/bin/bash
-NUM=$1
-if (( NUM % 2 == 0 )); then
-  printf "par"
-else
-  printf "impar"
-fi
-EOF
-
-chmod +x ~/atividadeiv.sh
-
-sudo aied validar 8ab001 checkpoint04
-
-######################
-# 11.6.5
-######################
-
-tee ~/atividadev.sh << 'EOF'
-#!/bin/bash
-NUM=$1
-if [ "$NUM" -gt 10 ]; then
-  printf "maior"
-else
-  printf "menor ou igual"
-fi
-EOF
-
-chmod +x ~/atividadev.sh
-
-sudo aied validar 8ab001 checkpoint05
+sudo aied validar py0001 checkpoint05 | tee ~/12.6.5
