@@ -1,10 +1,12 @@
 # 🚀 Guia de Configuração e Automação — Laboratório Linux (Fatec ZL)
 
-![Debian](https://img.shields.io/badge/Debian-D70A30?style=for-the-badge&logo=debian&logoColor=white)
-![Bash](https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white)
-![VirtualBox](https://img.shields.io/badge/VirtualBox-183A61?style=for-the-badge&logo=virtualbox&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+<p align="center">
+  <a href="https://www.debian.org/releases/bookworm/"><img src="https://img.shields.io/badge/Debian_12-D70A30?style=for-the-badge&logo=debian&logoColor=white" alt="Debian"></a>
+  <img src="https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Bash">
+  <a href="https://www.virtualbox.org/"><img src="https://img.shields.io/badge/VirtualBox-183A61?style=for-the-badge&logo=virtualbox&logoColor=white" alt="VirtualBox"></a>
+  <a href="https://git-scm.com/"><img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git"></a>
+  <a href="https://www.kernel.org/"><img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux"></a>
+</p>
 
 Este repositório contém os scripts de automação e validação de atividades desenvolvidos para o ambiente **Debian 12** na **Faculdade de Tecnologia Zona Leste (Fatec ZL)**. O objetivo é configurar o ambiente da Máquina Virtual (VM) de forma rápida e executar os testes necessários para a geração do relatório final de atividades em formato PDF.
 
