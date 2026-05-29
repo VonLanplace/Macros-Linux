@@ -4,7 +4,10 @@
 ######################
 
 wget -O /tmp/install.py http://www.aied.com.br/linux/download/install_v2.py
+sudo apt update
 sudo apt install libjsoncpp-dev -y
+sudo apt install build-essential g++ gcc libblkid-dev libsfml-dev libcurl4-openssl-dev curl wget iputils-ping iputils-tracepath net-tools lm-sensors git openssh-server ansifilter -y
+sudo systemctl enable --now ssh
 #sudo apt install vim -y
 sudo python3 /tmp/install.py
 
@@ -46,7 +49,7 @@ echo "444" > ~/diretorio2/arquivo4
 echo "555" > ~/diretorio2/arquivo5
 echo "666" > ~/diretorio2/arquivo6
 
-echo "y" | sudo aied validate 8e9c361c checkpoint01 | ansifilter | tee -a $saida
+echo "y" | sudo aied validar 8e9c361c checkpoint01 | ansifilter | tee -a $saida
 
 ##################
 # Prática 4.15.2 #
@@ -58,7 +61,7 @@ cp ~/diretorio1/arquivo1 ~/diretorio3/arquivo1
 rm ~/diretorio2/arquivo4
 mv ~/diretorio2/arquivo5 ~/diretorio3/
 
-echo "y" | sudo aied validate 8e9c361c checkpoint02 | ansifilter | tee -a $saida
+echo "y" | sudo aied validar 8e9c361c checkpoint02 | ansifilter | tee -a $saida
 
 ##################
 # Prática 4.15.3 #
@@ -69,7 +72,7 @@ rm ~/4.15.3.txt || echo ""
 ln -s ~/diretorio1/arquivo3 ~/diretorio3/arquivo3
 ln ~/diretorio2/arquivo6 ~/diretorio3/arquivo6
 
-echo "y" | sudo aied validate 8e9c361c checkpoint03 | ansifilter | tee -a $saida
+echo "y" | sudo aied validar 8e9c361c checkpoint03 | ansifilter | tee -a $saida
 
 ##################
 # Prática 4.15.4 #
@@ -121,7 +124,7 @@ chmod 1777 ~/tmp/
 chmod 755 ~/bin/copiar
 chmod 4755 /etc/aied/aied_64
 
-echo "y" | sudo aied validate 8e9c361c checkpoint04 | ansifilter | tee -a $saida
+echo "y" | sudo aied validar 8e9c361c checkpoint04 | ansifilter | tee -a $saida
 
 ##########
 # 5.15.1 #
@@ -146,7 +149,7 @@ echo "Insira a senha do leticia"
 yes | sudo passwd leticia
 wait
 
-echo "y" | sudo aied validate fcb0b800 checkpoint01 | ansifilter | tee -a $saida
+echo "y" | sudo aied validar fcb0b800 checkpoint01 | ansifilter | tee -a $saida
 
 ##########
 # 5.15.2 #
@@ -163,14 +166,14 @@ sudo usermod -L leticia
 
 sudo usermod -s /bin/false leticia
 
-echo "y" | sudo aied validate fcb0b800 checkpoint02 | ansifilter | tee -a $saida
+echo "y" | sudo aied validar fcb0b800 checkpoint02 | ansifilter | tee -a $saida
 
 ##########
 # 5.15.3 #
 ##########
 sudo usermod -p '*' root
 sudo usermod -s /bin/false www-data
-echo "y" | sudo aied validate fcb0b800 checkpoint03 | ansifilter | tee -a $saida
+echo "y" | sudo aied validar fcb0b800 checkpoint03 | ansifilter | tee -a $saida
 
 ##########
 # 5.15.4 #
@@ -180,7 +183,7 @@ sudo groupadd tomcat
 sudo useradd -s /bin/false -g tomcat -d /opt/tomcat -M tomcat
 sudo mkdir -p /opt/tomcat
 sudo chgrp tomcat /opt/tomcat
-echo "y" | sudo aied validate fcb0b800 checkpoint04 | ansifilter | tee -a $saida
+echo "y" | sudo aied validar fcb0b800 checkpoint04 | ansifilter | tee -a $saida
 
 ##########
 # 6.15.1 #
@@ -204,7 +207,7 @@ echo "UUID=$(sudo lsblk -no UUID $PARTITION) /backup ext4 defaults,nofail 0 2" |
 sudo systemctl daemon-reload
 sudo mount -a
 
-echo "y" | sudo aied validate 8b65b431 checkpoint01 | ansifilter | tee -a $saida
+echo "y" | sudo aied validar 8b65b431 checkpoint01 | ansifilter | tee -a $saida
 
 ##########
 # 6.15.2 #
