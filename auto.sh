@@ -140,13 +140,17 @@ sudo mkdir -p /hd2/usuarios/
 sudo chmod 755 /hd2/usuarios/
 sudo useradd -m -d /hd2/usuarios/bia bia
 echo "Insira a senha do wanderson"
-yes | sudo passwd wanderson
+echo "wanderson:senha123" | sudo chpasswd
+#yes | sudo passwd wanderson
+
 wait
 echo "Insira a senha do bia"
-yes | sudo passwd bia
+echo "bia:senha123" | sudo chpasswd
+#yes | sudo passwd bia
 wait
 echo "Insira a senha do leticia"
-yes | sudo passwd leticia
+echo "leticia:senha123" | sudo chpasswd
+#yes | sudo passwd leticia
 wait
 
 echo "y" | sudo aied validar fcb0b800 checkpoint01 | ansifilter | tee -a $saida
@@ -427,7 +431,6 @@ echo "y" | sudo aied validar 8ab001 checkpoint01 | ansifilter | tee -a $saida
 
 tee ~/atividadeii.sh << 'EOF'
 #!/bin/bash
-# Como precisamos do nome do aluno aqui dentro, vamos ler do script anterior ou deixar fixo
 # Se o validador testar com o arquivo estático, precisamos gerar com o nome real.
 # Para misturar variáveis locais e externas, usamos a barra invertida \ antes do $ local:
 EOF
@@ -627,3 +630,4 @@ echo "y" | sudo aied validar d7a527b checkpoint01 | ansifilter | tee -a $saida
 
 cd ~/
 cp ATIVIDADES.txt ATIVIDADES.pdf
+exit
