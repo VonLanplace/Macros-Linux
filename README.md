@@ -85,9 +85,11 @@ Após a conclusão com sucesso de todos os scripts, um arquivo consolidado chama
 Para transferir o relatório da VM em modo NAT para a sua máquina física (Windows), abra o **Prompt de Comando (CMD)** ou **PowerShell** no Windows e execute o comando `scp` especificando a porta configurada no redirecionamento:
 
 ```cmd
-scp -P 2222 seu_usuario_linux@localhost:~/ATIVIDADES.pdf %USERPROFILE%\Downloads
+scp seu_usuario_linux@localhost:~/ATIVIDADES.pdf %USERPROFILE%\Downloads
 
 ```
+
+⚠️ **Atenção:** Fui informado que ocorre do arquivo pdf vir em branco ou com 0kb, neste caso mude o `.pdf` para `.txt` e use outras ferramentas para converter para pdf.
 
 O arquivo final estará disponível imediatamente na sua pasta de **Downloads** do Windows.
 
