@@ -53,11 +53,11 @@ su root
 apt update && apt install git -y
 
 # Clonar o repositório oficial de macros
-git clone [https://github.com/VonLanplace/Macros-Linux.git](https://github.com/VonLanplace/Macros-Linux.git)
+git clone https://github.com/VonLanplace/Macros-Linux.git
 
 ```
 
-> 💡 **Dica de Produtividade (Acesso via SSH em modo NAT):** Como a VM está em modo NAT, para acessá-la do seu sistema hospedeiro (Windows/Mac/Linux), você precisará configurar o **Redirecionamento de Portas** nas configurações avançadas de Rede da VM no VirtualBox (ex: mapear a porta hospedeira `2222` para a porta convidada `22` da VM). Após isso, o comando para conexão externa será: `ssh seu_usuario@localhost -p 2222`.
+> 💡 **Dica de Produtividade (Acesso via SSH em modo NAT):** Como a VM está em modo NAT, para acessá-la do seu sistema hospedeiro (Windows/Mac/Linux), você precisará configurar a VM para o modo bridge e conectar pelo ip encontrado com o coando `ip a`.
 
 ### ⚡ Passo 2.2: Execução dos Scripts de Automação
 
@@ -74,7 +74,7 @@ chmod +x *.sh
 
 ```
 
-⚠️ **Atenção:** O sistema fará algumas pausas controladas para solicitar dados e interações do usuário. Fique atento ao terminal: **as recomendações de respostas esperadas estarão listadas entre parênteses `()**`.
+⚠️ **Atenção:** O sistema fará algumas pausas controladas para solicitar dados e interações do usuário. Fique atento ao terminal: **as recomendações de respostas esperadas estarão listadas entre parênteses `()`**.
 
 ---
 
